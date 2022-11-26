@@ -28,8 +28,6 @@ const Main = ({
   chainId,
   chainData,
   address,
-  currentPage,
-  dispatch,
 }) => {
   const classes = useStyles();
   const { appTheme, setTheme } = useContext(CustomThemeContext);
@@ -53,7 +51,7 @@ const Main = ({
             </Typography>
           </Box>
           <Box>
-            <SendReceiveTab dispatch={dispatch} />
+            <SendReceiveTab />
           </Box>
         </Grid>
       ) : (

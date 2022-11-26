@@ -1,7 +1,9 @@
 import { Box } from "@material-ui/core";
 import { Tabs, Tab, TabPanel } from "@olympusdao/component-library";
+import { useState } from "react";
 
-const SendReceiveTab = ({dispatch}) => {
+const SendReceiveTab = () => {
+  const [value, setValue] = useState(0);
 
   return (
     <>
@@ -9,22 +11,22 @@ const SendReceiveTab = ({dispatch}) => {
         <Tabs
           centered
           indicatorColor="primary"
-          onChange={function noRefCheck() { }}
+          onChange={(e, val) => setValue(val)}
           textColor="primary"
-          value={0}
+          value={value}
         >
           <Tab label="Send" />
           <Tab label="Receive" />
         </Tabs>
         <TabPanel
           index={0}
-          value={0}
+          value={value}
         >
           Send content
         </TabPanel>
         <TabPanel
           index={1}
-          value={0}
+          value={value}
         >
           Receive content
         </TabPanel>

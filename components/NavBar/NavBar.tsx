@@ -3,15 +3,12 @@ import DisconnectButton from "./DisconnectButton";
 import ThemeToggleButton from "./ThemeToggleButton";
 import InfoButton from "./InfoButton";
 
-const NavBar = ({ walletIsConnected, disconnect, currentPage, dispatch }) => {
+const NavBar = ({ walletIsConnected, disconnect }) => {
 
   return (
     <Toolbar>
       {walletIsConnected &&
         <DisconnectButton onClick={disconnect}/>
-      }
-      { currentPage != "info" &&
-        <InfoButton dispatch={dispatch}/>
       }
       <ThemeToggleButton/>
     </Toolbar>

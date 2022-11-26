@@ -7,6 +7,7 @@ import { requestNonce, signNonce } from "@lib/auth";
 import * as url from "url";
 import { useCallback, useEffect, useReducer } from "react";
 import { Box } from "@material-ui/core";
+
 import NavBar from "@components/NavBar/NavBar";
 import Main from "@components/Main/Main";
 import Info from "@components/Info/Info";
@@ -49,7 +50,6 @@ if (typeof window !== "undefined") {
 }
 
 type StateType = {
-  currentPage?: string;
   provider?: any;
   web3Provider?: any;
   signer?: any;
@@ -63,10 +63,6 @@ type StateType = {
 };
 
 type ActionType =
-  | {
-      type: "SET_CURRENT_PAGE";
-      currentPage: StateType["currentPage"];
-    }
   | {
       type: "SET_WEB3_PROVIDER";
       provider: StateType["provider"];
@@ -97,7 +93,6 @@ type ActionType =
     };
 
 const initialState: StateType = {
-  currentPage: "auth", // "auth", "info"
   provider: null,
   web3Provider: null,
   signer: null,
@@ -120,11 +115,6 @@ type Token = {
 
 function reducer(state: StateType, action: ActionType): StateType {
   switch (action.type) {
-    case "SET_CURRENT_PAGE":
-      return {
-        ...state,
-        currentPage: action.currentPage,
-      };
     case "SET_WEB3_PROVIDER":
       return {
         ...state,
@@ -183,7 +173,6 @@ const Home = ({ initialAppTheme }) => {
   setInitTheme(initialAppTheme);
   const [state, dispatch] = useReducer(reducer, initialState);
   const {
-    currentPage,
     provider,
     web3Provider,
     signer,
@@ -379,8 +368,6 @@ const Home = ({ initialAppTheme }) => {
       <NavBar
         walletIsConnected={Boolean(web3Provider)}
         disconnect={disconnect}
-        currentPage={currentPage}
-        dispatch={dispatch}
       />
       <Box
         display="flex"
@@ -406,22 +393,16 @@ const Home = ({ initialAppTheme }) => {
             {error}
           </ErrorNotification>
         )}
-        {/* Info Page */}
-        {currentPage == "info" && <Info />}
-        {/* Main */}
-        {currentPage == "auth" &&
-          (!web3Provider ? (
-            <ConnectWalletButton onClick={connect} />
-          ) : (
-            <Main
-              chainIsSupported={chainIsSupported}
-              chainId={chainId}
-              chainData={chainData}
-              address={truncateHash(address)}
-              currentPage={currentPage}
-              dispatch={dispatch}
-            />
-          ))}
+        {!web3Provider ? (
+          <ConnectWalletButton onClick={connect} />
+        ) : (
+          <Main
+            chainIsSupported={chainIsSupported}
+            chainId={chainId}
+            chainData={chainData}
+            address={truncateHash(address)}
+          />
+        )}
       </Box>
     </>
   );
