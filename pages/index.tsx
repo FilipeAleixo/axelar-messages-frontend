@@ -377,7 +377,7 @@ const Home = ({ initialAppTheme }) => {
         height={"90vh"}
         width={"75%"}
         margin={"auto"}
-        mt={"30vh"}
+        mt={"15vh"}
       >
         {error && (
           <ErrorNotification

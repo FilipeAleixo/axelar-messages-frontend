@@ -1,8 +1,9 @@
 import { Box } from "@material-ui/core";
 import { Tabs, Tab, TabPanel } from "@olympusdao/component-library";
 import { useState } from "react";
+import SendTab from "./SendTab"
 
-const SendReceiveTab = () => {
+const SendReceive = () => {
   const [value, setValue] = useState(0);
 
   return (
@@ -22,7 +23,7 @@ const SendReceiveTab = () => {
           index={0}
           value={value}
         >
-          Send content
+          <SendTab onClick={()=>{return 0;}}/>
         </TabPanel>
         <TabPanel
           index={1}
@@ -35,4 +36,4 @@ const SendReceiveTab = () => {
   );
 };
 
-export default SendReceiveTab;
+export default SendReceive;

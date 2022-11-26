@@ -9,8 +9,7 @@ import Address from "@components/Main/Address";
 import { CustomThemeContext } from "@hooks/CustomThemeProvider";
 import FailedBadge from "../../public/icons/failed-badge.svg";
 import { darkTheme } from "../../themes/dark";
-import SendReceiveTab from "@components/SendReceive/SendReceiveTab";
-import SendMessageButton from "@components/SendReceive/SendMessageButton";
+import SendReceive from "@components/SendReceive/SendReceive";
 
 const useStyles = makeStyles((theme) => ({
   paperBox: {
@@ -51,7 +50,7 @@ const Main = ({
             </Typography>
           </Box>
           <Box>
-            <SendReceiveTab />
+            <SendReceive />
           </Box>
         </Grid>
       ) : (

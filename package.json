@@ -1,7 +1,7 @@
 {
-  "name": "verified-ohmies-frontend",
+  "name": "axelar-messages-frontend",
   "version": "0.1.0",
-  "description": "The frontend for Verified Ohmies",
+  "description": "Front-end to send and receive messages across multiple chains using Axelar",
   "private": true,
   "scripts": {
     "dev": "next dev",

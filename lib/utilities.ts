@@ -42,3 +42,12 @@ export function getChainData(chainId?: number): IChainData | undefined {
 
   return chainData;
 }
+
+export function sendAxelar(chainId: number, address: string, message: string) {
+  return 0;
+}
+
+export function receiveAxelar(chainId: number, address: string) {
+  //websocket that keeps listening for messages in target address & target chain 
+  return 0;
+}
